@@ -9,26 +9,25 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.entity.User;
-import pl.coderslab.services.ImplUserService;
+import pl.coderslab.services.UserServiceImpl;
 
 @Slf4j
 @Controller
 @RequestMapping("/")
 public class UserController {
 
-    private final ImplUserService implUserService;
+    private final UserServiceImpl userServiceImpl;
 
     final PasswordEncoder passwordEncoder;
 
-    public UserController(ImplUserService implUserService, PasswordEncoder passwordEncoder) {
-        this.implUserService = implUserService;
+    public UserController(UserServiceImpl userServiceImpl, PasswordEncoder passwordEncoder) {
+        this.userServiceImpl = userServiceImpl;
         this.passwordEncoder = passwordEncoder;
     }
-    @RequestMapping("/")
-    public String welcome(Model model) {
-//        model.addAttribute("message", "Welcome");
-        return "index";
-    }
+//    @RequestMapping("/")
+//    public String welcome() {
+//        return "index";
+//    }
 
 //    @GetMapping("/register")
     @GetMapping({"/register"})
@@ -39,7 +38,7 @@ public class UserController {
 //    @PostMapping("/registration")
     @PostMapping({"/register"})
     public String registrationUser(@ModelAttribute User user) {
-        implUserService.addNewUser(user);
+        userServiceImpl.addNewUser(user);
 
         return "register";
     }

@@ -8,12 +8,12 @@ import pl.coderslab.repository.UserRepository;
 
 @Service
 @Slf4j
-public class ImplUserService implements UserService {
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
     @Autowired
-    public ImplUserService(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

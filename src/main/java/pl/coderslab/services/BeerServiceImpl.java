@@ -1,12 +1,14 @@
 package pl.coderslab.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pl.coderslab.entity.Beer;
 import pl.coderslab.repository.BeerRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class BeerServiceImpl implements BeerService {
 
     private final BeerRepository beerRepository;
