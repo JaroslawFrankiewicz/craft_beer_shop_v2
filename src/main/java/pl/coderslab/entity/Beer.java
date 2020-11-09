@@ -16,7 +16,6 @@ import javax.persistence.*;
 public class Beer {
 
 
-//    @javax.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
