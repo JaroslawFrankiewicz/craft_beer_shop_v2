@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,23 +20,30 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Email
-    @NotBlank
-    private String email;
-
-    @Column(name = "first_name")
-    @NotBlank
-    private String firstName;
-
-    @Column(name = "second_name")
-    @NotBlank
-    private String secondName;
-
     @NotBlank
     private String login;
 
     @NotBlank
     private String password;
+
+//    @Column(name = "first_name")
+    @NotBlank
+    private String firstName;
+
+//    @Column(name = "second_name")
+    @NotBlank
+    private String secondName;
+
+    @Email
+    @NotBlank
+    private String email;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role"
+            , joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+
+    private Set<Role> roles;
 }
 
 

@@ -1,14 +1,15 @@
 package pl.coderslab.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.entity.User;
+import pl.coderslab.services.CurrentUser;
+import pl.coderslab.services.UserService;
 import pl.coderslab.services.UserServiceImpl;
 
 @Slf4j
@@ -16,18 +17,18 @@ import pl.coderslab.services.UserServiceImpl;
 @RequestMapping("/")
 public class UserController {
 
-    private final UserServiceImpl userServiceImpl;
+//    private final UserServiceImpl userServiceImpl;
+    private final UserService userService;
+//    final PasswordEncoder passwordEncoder;
 
-    final PasswordEncoder passwordEncoder;
+//    @Autowired
+//    private OAuth2ClientContext clientContext;
 
-    public UserController(UserServiceImpl userServiceImpl, PasswordEncoder passwordEncoder) {
-        this.userServiceImpl = userServiceImpl;
-        this.passwordEncoder = passwordEncoder;
+    public UserController(UserService userService) {
+        this.userService = userService;
+//        this.userServiceImpl = userServiceImpl;
+//        this.passwordEncoder = passwordEncoder;
     }
-//    @RequestMapping("/")
-//    public String welcome() {
-//        return "index";
-//    }
 
 //    @GetMapping("/register")
     @GetMapping({"/register"})
@@ -38,9 +39,13 @@ public class UserController {
 //    @PostMapping("/registration")
     @PostMapping({"/register"})
     public String registrationUser(@ModelAttribute User user) {
-        userServiceImpl.addNewUser(user);
-
-        return "register";
+        userService.addNewUser(user);
+        return "login";
     }
-
+    @GetMapping("/admin")
+    @ResponseBody
+    public String admin(@AuthenticationPrincipal CurrentUser customUser) {
+        User entityUser = customUser.getUser();
+        return "Hello " + entityUser.getLogin();
+    }
 }

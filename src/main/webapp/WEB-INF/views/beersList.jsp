@@ -16,6 +16,7 @@
 <!-- start main-->
 <%@ include file="header.jsp" %>
 <section>
+
     <div class="row padding-small">
         <i class="fas fa-users icon-users"></i>
         <h1>Piwa Świata:</h1>
@@ -25,6 +26,7 @@
 </section>
 
 <section class="mr-4 ml-4">
+<%--    <div class="container">--%>
     <div class="table-responsive">
     <table class="table" border="1">
         <thead>
@@ -58,6 +60,7 @@
         </tbody>
     </table>
     </div>
+<%--    </div> < !-- /container -->--%>
 </section>
 <a href="<c:url value="./add"/>">Add New Beer</a>
 <%--<section class="last-info-section padding-small">--%>

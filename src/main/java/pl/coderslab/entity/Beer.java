@@ -1,7 +1,6 @@
 package pl.coderslab.entity;
 
 import lombok.*;
-//import org.springframework.data.annotation.Id;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

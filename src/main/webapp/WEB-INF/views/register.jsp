@@ -30,10 +30,10 @@
                 <form action="/register" method="POST" class="padding-small text-center">
                     <h1 class="text-color-darker">Rejestracja</h1>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="name" name="first_name" placeholder="podaj imię">
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="podaj imię">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="surname" name="last_name" placeholder="podaj nazwisko">
+                        <input type="text" class="form-control" id="secondName" name="secondName" placeholder="podaj nazwisko">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="login" name="login" placeholder="podaj login">

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.entity.Beer;
+import pl.coderslab.entity.User;
 import pl.coderslab.services.BeerServiceImpl;
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
@@ -24,10 +25,10 @@ public class BeerController {
         this.beerServiceImpl = beerServiceImpl;
     }
 
-    @GetMapping("/")
-    public String welcome() {
-        return "index";
-    }
+//    @GetMapping("/")
+//    public String welcome() {
+//        return "index";
+//    }
 
     @GetMapping("beersList")
     public String allBeers(Model model) {
@@ -38,11 +39,13 @@ public class BeerController {
     @GetMapping("/add")
     public String add(Model model) {
         model.addAttribute("beer", new Beer());
+//        model.addAttribute("user", new User());
         return "add";
     }
     //@Admin
     @PostMapping("/add")
     public String add(@Valid Beer beer, BindingResult bindingResult) {
+
         if (bindingResult.hasErrors()) {
             return "add";
         }
