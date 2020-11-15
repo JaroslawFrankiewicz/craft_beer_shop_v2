@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -66,15 +67,44 @@ import javax.sql.DataSource;
 @Order(1)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Bean
+    public SpringDataUserDetailsService customUserDetailsService() {
+        return new SpringDataUserDetailsService();
+    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(customUserDetailsService());
+        authProvider.setPasswordEncoder(passwordEncoder());
+
+        return authProvider;
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider());
+    }
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/*").permitAll()
-                .antMatchers("/admin").authenticated()
+                .antMatchers("/").permitAll()
+                .antMatchers("/admin/**").authenticated()
                 .and().formLogin()
-                .loginPage("/login");
+                .loginPage("/login").permitAll()
+                .and()
+                .logout().permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/403")
+        ;
     }
 
 //    @Autowired
@@ -87,13 +117,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .authoritiesByUsernameQuery("SELECT `email`,'USER' FROM `users` WHERE `email`=?")
 //                .passwordEncoder(passwordEncoder());
 //    }
-    @Bean
-    public SpringDataUserDetailsService customUserDetailsService() {
-        return new SpringDataUserDetailsService();
-    }
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 }
