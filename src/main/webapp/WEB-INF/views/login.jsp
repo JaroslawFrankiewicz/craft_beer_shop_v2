@@ -27,7 +27,7 @@
                 <c:if test="${not empty msg}">
                     <div class="msg alert-success">${msg}</div>
                 </c:if>
-                <form class="padding-small text-center" action="<c:url value="/beersList"/>" method="get">
+                <form class="padding-small text-center" action="<c:url value="/"/>" method="get">
                     <c:if test="${not empty error}">
                         <div class="error alert-danger">${error}</div>
                     </c:if>

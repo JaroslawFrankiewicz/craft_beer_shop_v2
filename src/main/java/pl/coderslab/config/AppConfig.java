@@ -76,10 +76,10 @@ public class AppConfig implements WebMvcConfigurer {
         return localeResolver;
     }
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public BCryptPasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 //    @Bean
 //    public RequestContextListener requestContextListener() {
 //        return new RequestContextListener();

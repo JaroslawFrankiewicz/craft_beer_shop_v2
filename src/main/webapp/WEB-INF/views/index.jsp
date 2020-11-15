@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-<%--    <title>Zaplanuj Jedzonko</title>--%>
+    <%--    <title>Zaplanuj Jedzonko</title>--%>
 </head>
 <body>
 <!-- start main-->
@@ -22,7 +22,11 @@
                 <div class="container w-75 d-flex">
                     <div class="carousel-caption d-block">
                         <h1>Najnowsza kolekcja!</h1>
-                        <img src="/images/4488815.jpg" alt="beer1" style="width:50%">
+<%--                        <li>--%>
+                            <a href="/images/4488815.jpg">
+                                <img src="/images/4488815.jpg" alt="beer1" style="width:50%">
+                            </a>
+<%--                        </li>--%>
                     </div>
                 </div>
             </div>
@@ -30,7 +34,11 @@
                 <div class="container w-75 d-flex">
                     <div class="carousel-caption d-block">
                         <h1>Najnowsza kolekcja!</h1>
-                        <img src="/images/3205518.jpg" alt="beer2" style="width:50%">
+<%--                        <li>--%>
+                            <a href="/images/3205518.jpg">
+                                <img src="/images/3205518.jpg" alt="beer2" style="width:50%">
+                            </a>
+<%--                        </li>--%>
                     </div>
                 </div>
             </div>
@@ -38,7 +46,11 @@
                 <div class="container w-75 d-flex">
                     <div class="carousel-caption d-block">
                         <h1>Najnowsza kolekcja!</h1>
-                        <img src="/images/3295559.jpg" alt="beer3" style="width:50%">
+<%--                        <li>--%>
+                            <a href="/images/3295559.jpg">
+                                <img src="/images/3295559.jpg" alt="beer3" style="width:50%">
+                            </a>
+<%--                        </li>--%>
                     </div>
                 </div>
             </div>
