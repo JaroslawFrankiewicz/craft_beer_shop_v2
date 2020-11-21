@@ -18,19 +18,15 @@ public class CartItem {
     private int id;
 
     @ManyToOne
-    // It's mean CartItem table is many and Cart table is one. That is Many to one relationship
-    @JoinColumn(name = "cart_id") //It's mean we gonna create one cardId field in cartItem table to refer to Cart table
+    @JoinColumn(name = "cart_id")
     @JsonIgnore
-    //when we try to tell spring to convert this class object into json format, then this field gonna be excepted
     private Cart cart;
 
     @ManyToOne
-    // It's mean CartItem table is many and Product table is one. That is Many to one relationship
     @JoinColumn(name = "beer_id")
-    //It's mean we gonna create one productId field in cartItem table to refer to Product table
     private Beer beer;
 
-    private int quantity; // the number of product we gonna add to the cart
+    private int quantity;
 
-    private double totalPrice; // total price of this cart item
+    private double totalPrice;
 }
