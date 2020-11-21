@@ -3,10 +3,8 @@ package pl.coderslab.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import pl.coderslab.entity.User;
 
 
 @Slf4j
@@ -16,9 +14,15 @@ public class HomeController {
     public String startsPage (){
         return "index";
     }
+
     @GetMapping("/about")
     public String aboutPage (){
         return "about";
+    }
+
+    @GetMapping("/contact")
+    public String contactPage(){
+        return "contact";
     }
 
     @RequestMapping("/login")
@@ -32,6 +36,7 @@ public class HomeController {
         if (logout!=null) {
             model.addAttribute("msg", "You have been logout successfully");
         }
-        return "/";
+        return "/admin/index";
     }
+
 }

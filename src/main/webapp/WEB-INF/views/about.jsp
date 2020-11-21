@@ -13,25 +13,37 @@
 <body>
 <%@ include file="header.jsp" %>
 <!--    about -->
-<%--<section class="padding-medium story bg-light" id="about">--%>
-<%--    <div class="container d-flex justify-content-center align-items-center">--%>
-<%--        <div class="row">--%>
-<%--            <div class="col-4 mr-4">--%>
-<%--                <div class="div-img">--%>
-<%--                </div>--%>
-<%--            </div>--%>
+<section class="padding-medium story bg-light" id="about">
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="row">
+            <div class="col-4 mr-4">
+                <div class="div-img">
+                </div>
+            </div>
 
-<%--            <div class="col-7 ml-4">--%>
-<%--                <h1 class="pb-1">Lorem ipsum dolor sit amet</h1>--%>
-<%--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat--%>
-<%--                    volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed. Lorem ipsum dolor sit--%>
-<%--                    amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat. Donec--%>
-<%--                    placerat nisl magna, et faucibus arcu condimentum sed.--%>
-<%--                </p>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</section>--%>
+            <div class="col-7 ml-4">
+                <h1 class="pb-1"><h2>About me</h2></h1>
+                <p>Hi :) My name is <b>Jarosław Frankiewicz</b> and I am beginner Java programmer.
+                    I created this project to check my skill set and learn new skills regarding Java Spring and Hibernate.
+                    I started my journey with programming near one year ago at the "programming" classes at my Bootcamp.
+                    Then I got to know complete basics, such as Primitive Data Types, what is a class, what is an object,
+                    what is an interface etc. Near one year ago I was complete novice, but I really fell in love with programming
+                    and started to work on this field and improve my skills. Throughout this one year I have been programming
+                    Java web applications. This is my first project with the use of <b>Spring framework</b> and <b>Hibernate</b>.
+                    Stay tuned :)
+                    <br>
+                    <br>
+                    I am eagerly looking for my first real-life experience as a Java developer.
+                    <br>
+                    <br>
+                    Best regards,
+                    <br>
+                    Jarosław Frankiewicz
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 <%@ include file="footer.jsp" %>
 </body>
 </html>

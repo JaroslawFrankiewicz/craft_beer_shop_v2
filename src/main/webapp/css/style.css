@@ -15,6 +15,12 @@
 
 }
 
+table,td,th {
+  border-collapse:collapse;
+  border: 1px solid #000000;
+  text-align: center;
+}
+
 * {
   margin: 0;
   padding: 0;

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: jaroslaw
-  Date: 8/26/20
-  Time: 9:17 PM
+  Date: 11/16/20
+  Time: 7:15 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -22,11 +22,11 @@
                 <div class="container w-75 d-flex">
                     <div class="carousel-caption d-block">
                         <h1>Najnowsza kolekcja!</h1>
-<%--                        <li>--%>
-                            <a href="/images/4488815.jpg">
-                                <img src="/images/4488815.jpg" alt="beer1" style="width:50%">
-                            </a>
-<%--                        </li>--%>
+                        <%--                        <li>--%>
+                        <a href="/images/4488815.jpg">
+                            <img src="/images/4488815.jpg" alt="beer1" style="width:50%">
+                        </a>
+                        <%--                        </li>--%>
                     </div>
                 </div>
             </div>
@@ -34,11 +34,11 @@
                 <div class="container w-75 d-flex">
                     <div class="carousel-caption d-block">
                         <h1>Najnowsza kolekcja!</h1>
-<%--                        <li>--%>
-                            <a href="/images/3205518.jpg">
-                                <img src="/images/3205518.jpg" alt="beer2" style="width:50%">
-                            </a>
-<%--                        </li>--%>
+                        <%--                        <li>--%>
+                        <a href="/images/3205518.jpg">
+                            <img src="/images/3205518.jpg" alt="beer2" style="width:50%">
+                        </a>
+                        <%--                        </li>--%>
                     </div>
                 </div>
             </div>
@@ -46,11 +46,11 @@
                 <div class="container w-75 d-flex">
                     <div class="carousel-caption d-block">
                         <h1>Najnowsza kolekcja!</h1>
-<%--                        <li>--%>
-                            <a href="/images/3295559.jpg">
-                                <img src="/images/3295559.jpg" alt="beer3" style="width:50%">
-                            </a>
-<%--                        </li>--%>
+                        <%--                        <li>--%>
+                        <a href="/images/3295559.jpg">
+                            <img src="/images/3295559.jpg" alt="beer3" style="width:50%">
+                        </a>
+                        <%--                        </li>--%>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
 <%--        </div>--%>
 <%--        <div class="ml-4 align-self-center">--%>
 <%--            <button class="btn btn-color rounded-0 mt-4 pl-4 pr-4">--%>
-<%--                <a href="admin/index.jsp">Lorem ipsum</a>--%>
+<%--                <a href="admin_index.jsp">Lorem ipsum</a>--%>
 <%--            </button>--%>
 <%--        </div>--%>
 <%--    </div>--%>
@@ -119,7 +119,7 @@
 <%--                           aria-label="Recipient's username" aria-describedby="basic-addon2">--%>
 <%--                    <div class="input-group-append">--%>
 <%--                        <button class="input-group-text btn-color border-0 rounded-0" type="submit" id="basic-addon2">--%>
-<%--                            <a href="admin/index.jsp">Lorem</a>--%>
+<%--                            <a href="admin_index.jsp">Lorem</a>--%>
 <%--                        </button>--%>
 <%--                    </div>--%>
 <%--                </div>--%>
@@ -131,3 +131,4 @@
 <%@ include file="adminfooter.jsp" %>
 </body>
 </html>
+

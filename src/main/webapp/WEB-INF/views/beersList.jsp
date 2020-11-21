@@ -28,41 +28,48 @@
 <section class="mr-4 ml-4">
 <%--    <div class="container">--%>
     <div class="table-responsive">
-    <table class="table" border="1">
-        <thead>
-        <tr class="d-flex text-color-white">
-            <th scope="col" class="col-1">ID</th>
-            <th scope="col" class="col-2">NAZWA</th>
-            <th scope="col" class="col-1">TYPE</th>
-            <th scope="col" class="col-3">OPIS</th>
-            <th scope="col" class="col-1">ALCOHOL</th>
-            <th scope="col" class="col-1">COUTRY</th>
-            <th scope="col" class="col-1">BREWERY</th>
-            <th scope="col" class="col-1">CENA</th>
-            <th scope="col" class="col-1">IN STOCK</th>
-        </tr>
-        </thead>
-        <tbody class="text-color-lighter">
-    <c:forEach items="${beer}" var="beer">
-        <tr class="d-flex">
-            <th scope="row" class="col-1">${beer.id}</th>
-            <td class="col-2">${beer.name}</td>
-            <td class="col-1">${beer.type}</td>
-            <td class="col-3">${beer.description}</td>
-            <td class="col-1">${beer.alcohol}</td>
-            <td class="col-1">${beer.country}</td>
-            <td class="col-1">${beer.brewery}</td>
-            <td class="col-1">${beer.price}</td>
-            <td class="col-1">${beer.inStock}</td>
-<%--            <td class="col-1"><a href="#" class="btn btn-info rounded-0 text-light">Szczegóły</a></td>--%>
-        </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+        <table class="table">
+            <thead>
+            <tr class="d-flex text-color-white">
+                <th scope="col-lg" class="col-lg-1">ID</th>
+                <th scope="col-lg" class="col-lg-1">NAZWA</th>
+                <th scope="col-lg" class="col-lg-1">TYPE</th>
+                <th scope="col-lg" class="col-lg-3">OPIS</th>
+                <th scope="col-lg" class="col-lg-1">ALCOHOL</th>
+                <th scope="col-lg" class="col-lg-1">COUNTRY</th>
+                <th scope="col-lg" class="col-lg-1">BREWERY</th>
+                <th scope="col-lg" class="col-lg-1">CENA</th>
+                <th scope="col-lg" class="col-lg-1">IN STOCK</th>
+                <th scope="col-lg" class="col-lg-1">ADD</th>
+            </tr>
+            </thead>
+            <tbody class="text-color-lighter">
+            <c:forEach items="${beer}" var="beer">
+                <tr class="d-flex">
+                    <th scope="row" class="col-lg-1">${beer.id}</th>
+                    <th class="col-lg-1">${beer.name}</th>
+                    <th class="col-lg-1">${beer.type}</th>
+                    <th class="col-lg-3">${beer.description}</th>
+                    <th class="col-lg-1">${beer.alcohol}</th>
+                    <th class="col-lg-1">${beer.country}</th>
+                    <th class="col-lg-1">${beer.brewery}</th>
+                    <th class="col-lg-1">${beer.price}</th>
+                    <th class="col-lg-1">${beer.inStock}</th>
+                        <%--            <td class="col-1/2">${beer.inStock}</td>--%>
+                    <th class="col-1"><a href="${pageContext.request.contextPath}/cart/add/beer/${beer.getId()}"
+                                         class="btn btn-info rounded-0 text-light">Add to cart</a></th>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
     </div>
-<%--    </div> < !-- /container -->--%>
+    <%--    </div>--%>
+    <%--    < !-- /container -->--%>
 </section>
-<a href="<c:url value="./add"/>">Add New Beer</a>
+<p style="padding-bottom:5px"></p>
+<div class="orange-line w-100"></div>
+<%--<a href="<c:url value="./add"/>">Add New Beer</a>--%>
+
 <%--<section class="last-info-section padding-small">--%>
 <%--    <div class="container">--%>
 <%--        <div class="row">--%>

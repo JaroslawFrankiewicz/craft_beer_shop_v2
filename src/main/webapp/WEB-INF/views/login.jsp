@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +27,7 @@
                 <c:if test="${not empty msg}">
                     <div class="msg alert-success">${msg}</div>
                 </c:if>
-                <form class="padding-small text-center" action="<c:url value="/"/>" method="get">
+                <form class="padding-small text-center" action="<c:url value="admin/index"/>" method="get">
                     <c:if test="${not empty error}">
                         <div class="error alert-danger">${error}</div>
                     </c:if>

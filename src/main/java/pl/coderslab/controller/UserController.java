@@ -19,7 +19,7 @@ public class UserController {
 
 //    private final UserServiceImpl userServiceImpl;
     private final UserService userService;
-//    final PasswordEncoder passwordEncoder;
+//    private final PasswordEncoder passwordEncoder;
 
 //    @Autowired
 //    private OAuth2ClientContext clientContext;
@@ -42,6 +42,19 @@ public class UserController {
         userService.addNewUser(user);
         return "login";
     }
+
+    @GetMapping({"/admin/index"})
+    public String adminLogin(Model model) {
+        model.addAttribute("admin", new User());
+        return "admin/index";
+    }
+
+    @PostMapping({"/admin/logout"})
+    public String logout(@ModelAttribute User user) {
+        userService.addNewUser(user);
+        return "/";
+    }
+
     @GetMapping("/admin")
     @ResponseBody
     public String admin(@AuthenticationPrincipal CurrentUser customUser) {

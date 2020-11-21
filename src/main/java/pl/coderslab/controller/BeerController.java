@@ -2,6 +2,7 @@ package pl.coderslab.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,22 +36,29 @@ public class BeerController {
         model.addAttribute("beer", beerServiceImpl.getBeer());
         return "beersList";
     }
+    @Secured("ROLE_ADMIN")
+    @GetMapping("admin/beersList")
+    public String allBeersAdmin(Model model) {
+        model.addAttribute("beer", beerServiceImpl.getBeer());
+        return "admin/beersList";
+    }
+
     //@Admin
-    @GetMapping("/add")
+    @GetMapping("/admin/add")
     public String add(Model model) {
         model.addAttribute("beer", new Beer());
 //        model.addAttribute("user", new User());
-        return "add";
+        return "admin/add";
     }
     //@Admin
-    @PostMapping("/add")
+    @PostMapping("/admin/add")
     public String add(@Valid Beer beer, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return "add";
+            return "admin/add";
         }
         beerServiceImpl.add(beer);
-        return "redirect:/beersList";
+        return "redirect:/admin/beersList";
     }
 
     @GetMapping("/show/{id}")

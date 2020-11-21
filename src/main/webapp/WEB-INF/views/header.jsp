@@ -15,6 +15,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Craft Beers Shop</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Charmonman:400,700|Open+Sans:400,600,700&amp;subset=latin-ext"
@@ -41,7 +42,7 @@
                 <a class="nav-link color-header" href="/register">Rejestracja</a>
             </li>
             <li class="nav-item ml-4">
-                <a class="nav-link" href="/about">O nas</a>
+                <a class="nav-link" href="/about">About</a>
             </li>
             <li class="nav-item ml-4">
                 <a class="nav-link disabled" href="/beersList">Piwa Polskie</a>
@@ -51,6 +52,12 @@
             </li>
             <li class="nav-item ml-4">
                 <a class="nav-link disabled" href="contact">Kontakt</a>
+            </li>
+            <li class="nav-item ml-4">
+                <a href="#" class="btn btn-info btn-lg">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Your Cart
+                </a>
+<%--                <a class="nav-link disabled" href="contact">Your cart</a>--%>
             </li>
         </ul>
     </nav>
