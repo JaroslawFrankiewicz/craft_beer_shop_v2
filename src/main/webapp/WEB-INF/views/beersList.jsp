@@ -7,10 +7,11 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-
+    <title>Craft Beers List</title>
 </head>
 <body>
 <!-- start main-->
@@ -31,33 +32,34 @@
         <table class="table">
             <thead>
             <tr class="d-flex text-color-white">
-                <th scope="col-lg" class="col-lg-1">ID</th>
-                <th scope="col-lg" class="col-lg-1">NAZWA</th>
-                <th scope="col-lg" class="col-lg-1">TYPE</th>
-                <th scope="col-lg" class="col-lg-3">OPIS</th>
-                <th scope="col-lg" class="col-lg-1">ALCOHOL</th>
-                <th scope="col-lg" class="col-lg-1">COUNTRY</th>
-                <th scope="col-lg" class="col-lg-1">BREWERY</th>
-                <th scope="col-lg" class="col-lg-1">CENA</th>
-                <th scope="col-lg" class="col-lg-1">IN STOCK</th>
-                <th scope="col-lg" class="col-lg-1">ADD</th>
+                <th scope="col" class="col-lg-1">ID</th>
+                <th scope="col" class="col-lg-1">NAZWA</th>
+                <th scope="col" class="col-lg-1">TYPE</th>
+                <th scope="col" class="col-lg-3">OPIS</th>
+                <th scope="col" class="col-lg-1">ALCOHOL</th>
+                <th scope="col" class="col-lg-1">COUNTRY</th>
+                <th scope="col" class="col-lg-1">BREWERY</th>
+                <th scope="col" class="col-lg-1">CENA</th>
+                <th scope="col" class="col-lg-1">IN STOCK</th>
+                <th scope="col" class="col-lg-1">ADD</th>
             </tr>
             </thead>
             <tbody class="text-color-lighter">
             <c:forEach items="${beer}" var="beer">
                 <tr class="d-flex">
-                    <th scope="row" class="col-lg-1">${beer.id}</th>
-                    <th class="col-lg-1">${beer.name}</th>
-                    <th class="col-lg-1">${beer.type}</th>
-                    <th class="col-lg-3">${beer.description}</th>
-                    <th class="col-lg-1">${beer.alcohol}</th>
-                    <th class="col-lg-1">${beer.country}</th>
-                    <th class="col-lg-1">${beer.brewery}</th>
-                    <th class="col-lg-1">${beer.price}</th>
-                    <th class="col-lg-1">${beer.inStock}</th>
-                        <%--            <td class="col-1/2">${beer.inStock}</td>--%>
-                    <th class="col-1"><a href="${pageContext.request.contextPath}/cart/add/beer/${beer.getId()}"
-                                         class="btn btn-info rounded-0 text-light">Add to cart</a></th>
+                    <td scope="row" class="col-lg-1">${beer.id}</td>
+                    <td class="col-lg-1">${beer.name}</td>
+                    <td class="col-lg-1">${beer.type}</td>
+                    <td class="col-lg-3">${beer.description}</td>
+                    <td class="col-lg-1">${beer.alcohol}</td>
+                    <td class="col-lg-1">${beer.country}</td>
+                    <td class="col-lg-1">${beer.brewery}</td>
+                    <td class="col-lg-1">${beer.price}</td>
+                    <td class="col-lg-1">${beer.inStock}</td>
+                    <td class="col-1">${beer.unitStock}</td>
+                    <td class="col-1"><a class="btn btn-info rounded-0 text-light"
+                        href="<c:out value="/beerDetails/${beer.id}"/>">Details</a></td>
+<%--                        href="<c:out value="/cart/${beer.id}"/>">Details</a></td>--%>
                 </tr>
             </c:forEach>
             </tbody>

@@ -21,15 +21,15 @@
                 <h3 class="mb-4">GitHub address:</h3>
                 <p><a target="_blank" href="http://www.github.com/jaroslawfrankiewicz" class="btn btn-default btn-lg"><i class="fa fa-github"> <span class="network-name">My Github</span></i></a></p>
             </div>
-            <div class="col pl-4 ml-4">
+<%--            <div class="col pl-4 ml-4">--%>
 <%--                <h3 class="mb-4" ipsum </h3>--%>
 <%--                <ul class="container">--%>
 <%--                    <li>consectetur</li>--%>
 <%--                    <li>tempor</li>--%>
 <%--                    <li>incididunt</li>--%>
 <%--                    <li>aliqua</li>--%>
-                </ul>
-            </div>
+<%--                </ul>--%>
+<%--            </div>--%>
 <%--            <div class="col">--%>
 <%--                <h3 class="mb-4">E-mail</h3>--%>
 <%--                <div class="input-group mb-3">--%>

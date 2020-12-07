@@ -21,6 +21,11 @@ table,td,th {
   text-align: center;
 }
 
+/*table_sum,td,th {*/
+/*  border-collapse:collapse;*/
+/*  text-align: right;*/
+/*}*/
+
 * {
   margin: 0;
   padding: 0;
@@ -41,7 +46,7 @@ p {
 }
 
 .bg-light {
-background: #EAEAEA;
+background: #666666;
 }
 
 .noPadding {
@@ -260,7 +265,7 @@ FORM DD {
 /*------------------------------*/
 
 .div-img {
-  height: 315px;
+  height: 210px;
   width: 315px;
   background: var(--lighter-background-color)
 }

@@ -10,12 +10,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%--    <title>Zaplanuj Jedzonko</title>--%>
+        <title>Craft Beers Shop</title>
 </head>
 <body>
 <!-- start main-->
 <%@ include file="header.jsp" %>
-<section class="padding-large bg-light">
+<section class="padding-large">
     <div id="carouselExampleControls" class="carousel slide main-slider" data-ride="carousel">
         <div class="carousel-inner container">
             <div class="carousel-item active">

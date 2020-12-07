@@ -13,11 +13,14 @@
 <body>
 <%@ include file="header.jsp" %>
 <!--    about -->
-<section class="padding-medium story bg-light" id="about">
+<section class="padding-medium" id="about">
     <div class="container d-flex justify-content-center align-items-center">
         <div class="row">
             <div class="col-4 mr-4">
                 <div class="div-img">
+                    <a href="/images/4488815.jpg">
+                        <img src="/images/4488815.jpg" alt="beer1" style="width:100%">
+                    </a>
                 </div>
             </div>
 

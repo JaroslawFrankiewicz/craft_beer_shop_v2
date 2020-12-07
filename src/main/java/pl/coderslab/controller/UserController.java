@@ -6,41 +6,57 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.entity.User;
 import pl.coderslab.services.CurrentUser;
 import pl.coderslab.services.UserService;
-import pl.coderslab.services.UserServiceImpl;
+
+import javax.validation.Valid;
 
 @Slf4j
 @Controller
 @RequestMapping("/")
 public class UserController {
 
-//    private final UserServiceImpl userServiceImpl;
+
     private final UserService userService;
-//    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
 //    @Autowired
 //    private OAuth2ClientContext clientContext;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
-//        this.userServiceImpl = userServiceImpl;
-//        this.passwordEncoder = passwordEncoder;
+
+        this.passwordEncoder = passwordEncoder;
     }
 
-//    @GetMapping("/register")
+
     @GetMapping({"/register"})
     public String showRegistrationPage(Model model) {
         model.addAttribute("newUser", new User());
         return "register";
     }
-//    @PostMapping("/registration")
+
     @PostMapping({"/register"})
-    public String registrationUser(@ModelAttribute User user) {
+    public String registrationUser(@ModelAttribute("newUser") @Validated User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "register";
+        }
         userService.addNewUser(user);
+        return "redirect:login";
+
+    }
+    @GetMapping("/login")
+    public String login() {
         return "login";
+    }
+
+    @PostMapping("/login")
+    public String loginPost() {
+        return "beersList";
     }
 
     @GetMapping({"/admin/index"})

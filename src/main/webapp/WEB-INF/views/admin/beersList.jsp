@@ -40,7 +40,8 @@
             <th scope="col-lg" class="col-lg-1">BREWERY</th>
             <th scope="col-lg" class="col-lg-1">CENA</th>
             <th scope="col-lg" class="col-lg-1">IN STOCK</th>
-            <th scope="col-lg" class="col-lg-1">ADD</th>
+            <th scope="col-lg" class="col-lg-1">UNIT</th>
+            <th scope="col-lg" class="col-lg-1">DETAILS</th>
         </tr>
         </thead>
         <tbody class="text-color-lighter">
@@ -55,9 +56,11 @@
             <th class="col-lg-1">${beer.brewery}</th>
             <th class="col-lg-1">${beer.price}</th>
             <th class="col-lg-1">${beer.inStock}</th>
-<%--            <td class="col-1/2">${beer.inStock}</td>--%>
-            <th class="col-1"><a href="${pageContext.request.contextPath}/cart/add/beer/${beer.getId()}"
-                                 class="btn btn-info rounded-0 text-light">Add to cart</a></th>
+            <td class="col-1">${beer.unitStock}</td>
+            <td class="col-1"><a class="btn btn-info rounded-0 text-light"
+                                 href="<c:out value="/beerDetails/${beer.id}"/>">Details</a></td>
+<%--            <th class="col-1"><a href="${pageContext.request.contextPath}/cart/add/${beer.id()}"--%>
+<%--                                 class="btn btn-info rounded-0 text-light">Add to cart</a></th>--%>
         </tr>
         </c:forEach>
         </tbody>
@@ -66,7 +69,8 @@
 <%--    </div>--%>
 <%--    < !-- /container -->--%>
 </section>
-<div href="<c:url value="admin/add"/>" class="btn btn-danger rounded-0 text-light">Add New Beer</div>
+<%--<div href="<c:url value="admin/add"/>" class="btn btn-danger rounded-0 text-light">Add New Beer</div>--%>
+<a href="${pageContext.request.contextPath}/admin/add" class="btn btn-danger rounded-0 text-light">Add New Beer</a>
 <p style="padding-bottom:5px"></p>
 <div class="orange-line w-100"></div>
 <%--<section class="last-info-section padding-small">--%>

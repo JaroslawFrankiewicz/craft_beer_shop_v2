@@ -7,5 +7,6 @@ import pl.coderslab.entity.User;
 public interface UserService {
 
     void addNewUser(User user);
+
     User findByLogin(String login);
 }

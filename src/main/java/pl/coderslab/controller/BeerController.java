@@ -2,48 +2,60 @@ package pl.coderslab.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.entity.Beer;
 import pl.coderslab.entity.User;
-import pl.coderslab.services.BeerServiceImpl;
+import pl.coderslab.services.BeerService;
+import pl.coderslab.services.CurrentUser;
+import pl.coderslab.services.UserService;
+
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
 @Controller
-//@RequestMapping("/beers")
+//@RequestMapping("/beersList")
 public class BeerController {
-    private final BeerServiceImpl beerServiceImpl;
+    private final BeerService beerService;
+//    private final UserService userService;
 
-    public BeerController(BeerServiceImpl beerServiceImpl) {
-        this.beerServiceImpl = beerServiceImpl;
+    public BeerController(BeerService beerService, UserService userService) {
+        this.beerService = beerService;
+//        this.userService = userService;
     }
 
-//    @GetMapping("/")
-//    public String welcome() {
-//        return "index";
-//    }
 
     @GetMapping("beersList")
     public String allBeers(Model model) {
-        model.addAttribute("beer", beerServiceImpl.getBeer());
+        model.addAttribute("beer", beerService.getBeer());
         return "beersList";
     }
+
+    @GetMapping("/beerDetails/{id}")
+        public String getBeerById(Model model, @PathVariable long id) {
+            model.addAttribute("beer",  beerService.findBeer(id).orElseThrow(EntityNotFoundException::new));
+        return "beerDetails";
+    }
+
     @Secured("ROLE_ADMIN")
     @GetMapping("admin/beersList")
     public String allBeersAdmin(Model model) {
-        model.addAttribute("beer", beerServiceImpl.getBeer());
+        model.addAttribute("beer", beerService.getBeer());
         return "admin/beersList";
     }
 
     //@Admin
+    @Secured("ROLE_ADMIN")
     @GetMapping("/admin/add")
     public String add(Model model) {
         model.addAttribute("beer", new Beer());
@@ -51,41 +63,56 @@ public class BeerController {
         return "admin/add";
     }
     //@Admin
+    @Secured("ROLE_ADMIN")
     @PostMapping("/admin/add")
-    public String add(@Valid Beer beer, BindingResult bindingResult) {
+    public String add(@ModelAttribute("beer") @Valid Beer beer, BindingResult bindingResult) {
+//
+//        if (bindingResult.hasErrors()) {
+//            return "admin/add";
+//        }
+//        beerService.add(beer);
+//        return "redirect:/admin/beersList";
+//    }
 
-        if (bindingResult.hasErrors()) {
-            return "admin/add";
-        }
-        beerServiceImpl.add(beer);
-        return "redirect:/admin/beersList";
+    if (bindingResult.hasErrors()) {
+        System.out.println("There are errors" + bindingResult.getAllErrors());
+        return "admin/add";
     }
+//    String[] supressedFields = bindingResult.getSuppressedFields();
+//        if (supressedFields.length > 0) {
+//        throw new RuntimeException("Trial of binding supressed fields: "
+//                + StringUtils.arrayToCommaDelimitedString(supressedFields));
+//    }
 
-    @GetMapping("/show/{id}")
-    public String show(Model model, @PathVariable long id) {
-        model.addAttribute("beer", beerServiceImpl.findBeer(id).orElseThrow(EntityNotFoundException::new));
-        return "show";
-    }
+
+        beerService.add(beer);
+
+        return "redirect:/beersList";
+}
+
     //@Admin
+    @Secured("ROLE_ADMIN")
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable Long id) {
-        beerServiceImpl.delete(id);
+    public String delete(@PathVariable long id) {
+        beerService.delete(id);
         return "redirect:/beersList";
     }
     //@Admin
-    @GetMapping("/edit/{id}")
-    public String edit(@PathVariable Long id, Model model) {
-        Optional<Beer> beer = beerServiceImpl.findBeer(id);
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/admin/edit/{id}")
+    public String edit(@PathVariable long id, Model model) {
+        Optional<Beer> beer = beerService.findBeer(id);
         model.addAttribute("beer", beer);
-        return "beerEdit";
+        return "admin/beerDetails";
     }
     //@Admin
-    @PostMapping("/edit")
+    @Secured("ROLE_ADMIN")
+    @PostMapping("/admin/edit")
     public String edit(@Valid Beer beer, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "beerEdit";
+            return "admin/beerDetails";
         }
-        beerServiceImpl.add(beer);
+        beerService.add(beer);
         return "redirect:/beersList";
     }
 

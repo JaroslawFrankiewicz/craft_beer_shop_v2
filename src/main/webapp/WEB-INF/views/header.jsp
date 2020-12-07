@@ -20,7 +20,7 @@
           crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Charmonman:400,700|Open+Sans:400,600,700&amp;subset=latin-ext"
           rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <%--    <style>--%>
@@ -36,25 +36,25 @@
         </a>
         <ul class="nav nounderline text-uppercase">
             <li class="nav-item ml-4">
-                <a class="nav-link color-header" href="/login">Logowanie</a>
+                <a class="nav-link color-header" href="${pageContext.request.contextPath}/login">Logowanie</a>
             </li>
             <li class="nav-item ml-4">
-                <a class="nav-link color-header" href="/register">Rejestracja</a>
+                <a class="nav-link color-header" href="${pageContext.request.contextPath}/register">Rejestracja</a>
             </li>
             <li class="nav-item ml-4">
-                <a class="nav-link" href="/about">About</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/about">About</a>
             </li>
             <li class="nav-item ml-4">
-                <a class="nav-link disabled" href="/beersList">Piwa Polskie</a>
+                <a class="nav-link disabled" href="${pageContext.request.contextPath}/beersList">Piwa Polskie</a>
             </li>
             <li class="nav-item ml-4">
-                <a class="nav-link disabled" href="/beersList">Piwa Świata</a>
+                <a class="nav-link disabled" href="${pageContext.request.contextPath}/beersList">Piwa Świata</a>
             </li>
             <li class="nav-item ml-4">
-                <a class="nav-link disabled" href="contact">Kontakt</a>
+                <a class="nav-link disabled" href="${pageContext.request.contextPath}/contact">Kontakt</a>
             </li>
             <li class="nav-item ml-4">
-                <a href="#" class="btn btn-info btn-lg">
+                <a href="${pageContext.request.contextPath}/cart" class="btn btn-info btn-lg">
                     <span class="glyphicon glyphicon-shopping-cart"></span> Your Cart
                 </a>
 <%--                <a class="nav-link disabled" href="contact">Your cart</a>--%>

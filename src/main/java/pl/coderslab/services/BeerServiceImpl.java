@@ -42,4 +42,9 @@ public class BeerServiceImpl implements BeerService {
     public void update(Beer beer) {
         beerRepository.save(beer);
     }
+
+    @Override
+    public Beer getBeerById(Long id) {
+        return beerRepository.findById(id).orElseThrow(RuntimeException::new);
+    }
 }

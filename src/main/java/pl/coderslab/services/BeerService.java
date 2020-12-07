@@ -15,4 +15,6 @@ public interface BeerService {
     void delete(Long id);
 
     void update(Beer beer);
+
+    Beer getBeerById(Long id);
 }

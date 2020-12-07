@@ -1,10 +1,11 @@
 package pl.coderslab.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -12,21 +13,19 @@ import javax.persistence.*;
 @Table(name = "cartItem")
 public class CartItem {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
+
+    @NotNull
+    private int quantity;
 
     @ManyToOne
     @JoinColumn(name = "cart_id")
-    @JsonIgnore
     private Cart cart;
 
     @ManyToOne
     @JoinColumn(name = "beer_id")
     private Beer beer;
 
-    private int quantity;
-
-    private double totalPrice;
 }

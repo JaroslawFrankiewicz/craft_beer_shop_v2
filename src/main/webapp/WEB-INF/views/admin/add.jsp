@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%--    <title>Add beer</title>--%>
+        <title>Add beer</title>
 </head>
 <body>
 <!-- start main-->
@@ -27,7 +27,7 @@
 </section>
 <section class="mr-4 ml-4">
     <table class="table" border="1">
-        <caption>align="center"</caption>
+<%--        <caption>align="center"</caption>--%>
                 <%--@elvariable id="beer" type=""--%>
                 <form:form method="post" modelAttribute="beer" action="${pageContext.request.contextPath}/admin/add">
                 <p hidden><form:input path="id"/></p>
@@ -56,9 +56,12 @@
 <%--                <form:options items="${types}"/>--%>
 <%--                </form:select><br/>--%>
                 <form:errors path="type"/><br/></dd>
-                dt><label for="inStock">In Stock:</label></dt>
+                <dt><label for="inStock">In Stock:</label></dt>
                 <dd><form:input path="inStock"/>
                 <form:errors path="inStock"/><br/></dd>
+                <dt><label for="inStock">Unit:</label></dt>
+                <dd><form:input path="unitStock"/>
+                <form:errors path="unitStock"/><br/></dd>
                 <input type="submit" value="Save">
             </form:form>
     </table>

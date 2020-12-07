@@ -27,25 +27,35 @@
             <div class="container w-25">
                 <!-- fix action, method -->
                 <!-- add name attribute for all inputs -->
-                <form action="/register" method="POST" class="padding-small text-center">
+                <form:form modelAttribute="newUser" action="${pageContext.request.contextPath}/register" method="POST" class="padding-small text-center">
                     <h1 class="text-color-darker">Rejestracja</h1>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="podaj imię">
+                        <label for="firstName"></label>
+                        <form:input type="text" class="form-control" id="firstName" name="firstName" placeholder="podaj imię" required="required" path="firstName"/>
+
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="secondName" name="secondName" placeholder="podaj nazwisko">
+                        <label for="lastName"></label>
+                        <form:input type="text" class="form-control" id="lastName" name="lastName" placeholder="podaj nazwisko" required="required" path="lastName"/>
+
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="login" name="login" placeholder="podaj login">
+                        <label for="login"></label>
+                        <form:input type="text" class="form-control" id="login" name="login" placeholder="podaj login" required="required" path="login"/>
+
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="podaj email">
+                        <label for="email"></label>
+                        <form:input type="text" class="form-control" id="email" name="email" placeholder="podaj email" required="required" path="email"/>
+
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="podaj hasło">
+                        <label for="password"></label>
+                        <form:input type="password" class="form-control" id="password" name="password" placeholder="podaj hasło" required="required" path="password"/>
+
                     </div>
                     <button class="btn btn-color rounded-0" type="submit">Zarejestruj</button>
-                </form>
+                </form:form>
             </div>
         </div>
     </div>
