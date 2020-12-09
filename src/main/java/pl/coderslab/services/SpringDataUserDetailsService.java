@@ -12,16 +12,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class SpringDataUserDetailsService implements UserDetailsService {
-    private UserServiceImpl userServiceImpl;
+    private UserService userService;
 
     @Autowired
     public void setUserRepository(UserService userService) {
-        this.userServiceImpl = userServiceImpl;
+        this.userService = userService;
     }
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        User user = userServiceImpl.findByLogin(login);
+        User user = userService.findByLogin(login);
         if (user == null) {
             throw new UsernameNotFoundException(login);
         }
@@ -29,7 +29,6 @@ public class SpringDataUserDetailsService implements UserDetailsService {
         user.getRoles().forEach(r ->
                 grantedAuthorities.add(new SimpleGrantedAuthority(r.getName())));
 
-        return new CurrentUser(user.getLogin(), user.getPassword(),
-                grantedAuthorities, user);
+        return new CurrentUser(user.getLogin(), user.getPassword(), grantedAuthorities, user);
     }
 }

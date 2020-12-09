@@ -9,4 +9,5 @@ public interface UserService {
     void addNewUser(User user);
 
     User findByLogin(String login);
+
 }

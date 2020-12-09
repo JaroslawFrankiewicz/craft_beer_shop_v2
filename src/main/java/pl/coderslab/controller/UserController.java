@@ -22,15 +22,15 @@ public class UserController {
 
 
     private final UserService userService;
-    private final PasswordEncoder passwordEncoder;
+//    private final PasswordEncoder passwordEncoder;
 
 //    @Autowired
 //    private OAuth2ClientContext clientContext;
 
-    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
+    public UserController(UserService userService) {
         this.userService = userService;
 
-        this.passwordEncoder = passwordEncoder;
+//        this.passwordEncoder = passwordEncoder;
     }
 
 
@@ -55,9 +55,24 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String loginPost() {
-        return "beersList";
+    public String loginPost(@RequestParam(value = "error", required = false) String error,
+                        @RequestParam(value = "logout", required = false) String logout,
+                        Model model, String login) {
+        User user = userService.findByLogin(login);
+        if (error!=null) {
+            model.addAttribute("error", "Invalid username and password!");
+        }
+
+        if (logout!=null) {
+            model.addAttribute("msg", "You have been logout successfully");
+        }
+        return "/admin/index";
     }
+
+//    @PostMapping("/login")
+//    public String loginPost() {
+//        return "beersList";
+//    }
 
     @GetMapping({"/admin/index"})
     public String adminLogin(Model model) {
