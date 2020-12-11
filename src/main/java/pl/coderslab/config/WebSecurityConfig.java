@@ -85,7 +85,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
     }
 
@@ -94,7 +94,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasAnyRole("USER", "ADMIN")
+//                .antMatchers("/admin/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/").permitAll()
                 .and().formLogin()
                 .loginPage("/login").permitAll()

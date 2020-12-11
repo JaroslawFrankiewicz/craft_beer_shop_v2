@@ -24,14 +24,11 @@ import java.util.Optional;
 
 @Slf4j
 @Controller
-//@RequestMapping("/beersList")
 public class BeerController {
     private final BeerService beerService;
-//    private final UserService userService;
 
-    public BeerController(BeerService beerService, UserService userService) {
+    public BeerController(BeerService beerService) {
         this.beerService = beerService;
-//        this.userService = userService;
     }
 
 
@@ -42,60 +39,58 @@ public class BeerController {
     }
 
     @GetMapping("/beerDetails/{id}")
-        public String getBeerById(Model model, @PathVariable long id) {
-            model.addAttribute("beer",  beerService.findBeer(id).orElseThrow(EntityNotFoundException::new));
+    public String getBeerById(Model model, @PathVariable long id) {
+        model.addAttribute("beer", beerService.findBeer(id).orElseThrow(EntityNotFoundException::new));
         return "beerDetails";
     }
 
-    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+    //    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("admin/beersList")
     public String allBeersAdmin(Model model) {
         model.addAttribute("beer", beerService.getBeer());
         return "admin/beersList";
     }
 
-    //@Admin
-//    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+
+    //    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("/admin/add")
     public String add(Model model) {
+        model.addAttribute("beer", new Beer());
         return "admin/add";
     }
-    //@Admin
-//    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+
+    //    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @PostMapping("/admin/add")
     public String add(@ModelAttribute("beer") @Valid Beer beer, BindingResult bindingResult) {
-//
+
 //        if (bindingResult.hasErrors()) {
 //            return "admin/add";
 //        }
 //        beerService.add(beer);
-//        return "redirect:/admin/beersList";
+//        return "redirect:admin/beersList";
 //    }
 
-    if (bindingResult.hasErrors()) {
-        System.out.println("There are errors" + bindingResult.getAllErrors());
-        return "admin/add";
-    }
+        if (bindingResult.hasErrors()) {
+            System.out.println("There are errors" + bindingResult.getAllErrors());
+            return "admin/add";
+        }
 //    String[] supressedFields = bindingResult.getSuppressedFields();
 //        if (supressedFields.length > 0) {
 //        throw new RuntimeException("Trial of binding supressed fields: "
 //                + StringUtils.arrayToCommaDelimitedString(supressedFields));
 //    }
 
-
         beerService.add(beer);
+        return "redirect:admin/beersList";
+    }
 
-        return "redirect:/beersList";
-}
-
-    //@Admin
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable long id) {
         beerService.delete(id);
         return "redirect:/beersList";
     }
-    //@Admin
+
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("/admin/edit/{id}")
     public String edit(@PathVariable long id, Model model) {
@@ -103,7 +98,7 @@ public class BeerController {
         model.addAttribute("beer", beer);
         return "admin/beerDetails";
     }
-    //@Admin
+
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @PostMapping("/admin/edit")
     public String edit(@Valid Beer beer, BindingResult bindingResult) {
