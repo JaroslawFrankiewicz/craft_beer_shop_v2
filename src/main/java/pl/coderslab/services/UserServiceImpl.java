@@ -33,9 +33,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void addNewUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Role userRole = roleRepository.findByName("ROLE_USER");
+        Role userRole = roleRepository.findByName("USER");
         user.setRoles(new HashSet < > (roleRepository.findAll()));
-        user.setRoles(new HashSet<Role>(Collections.singletonList(userRole)));
+        user.setRoles(new HashSet< >(Collections.singletonList(userRole)));
         userRepository.save(user);
         log.info("New user added " + user.toString());
     }

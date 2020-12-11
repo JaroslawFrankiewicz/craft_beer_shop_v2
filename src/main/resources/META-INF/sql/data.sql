@@ -1,5 +1,5 @@
 use beers_shop;
-# INSERT INTO role (id, name) VALUES (NULL,'USER');
+INSERT INTO role (id, name) VALUES (NULL,'USER');
 INSERT INTO role (id, name) VALUES (NULL, 'ADMIN');
 
 INSERT INTO beers (alcohol, brewery, country, description, unit, inStock, name, price, type) VALUES (7, 'pl', 'Poland', 'Piwo jasne pełne', 10, true, 'Beer1', 5, 'ok');

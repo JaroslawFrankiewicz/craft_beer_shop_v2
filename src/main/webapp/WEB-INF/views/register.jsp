@@ -32,27 +32,27 @@
                     <div class="form-group">
                         <label for="firstName"></label>
                         <form:input type="text" class="form-control" id="firstName" name="firstName" placeholder="podaj imię" required="required" path="firstName"/>
-
+                        <form:errors path="firstName"/>
                     </div>
                     <div class="form-group">
                         <label for="lastName"></label>
                         <form:input type="text" class="form-control" id="lastName" name="lastName" placeholder="podaj nazwisko" required="required" path="lastName"/>
-
+                        <form:errors path="lastName"/>
                     </div>
                     <div class="form-group">
                         <label for="login"></label>
                         <form:input type="text" class="form-control" id="login" name="login" placeholder="podaj login" required="required" path="login"/>
-
+                        <form:errors path="login"/>
                     </div>
                     <div class="form-group">
                         <label for="email"></label>
                         <form:input type="text" class="form-control" id="email" name="email" placeholder="podaj email" required="required" path="email"/>
-
+                        <form:errors path="email"/>
                     </div>
                     <div class="form-group">
                         <label for="password"></label>
                         <form:input type="password" class="form-control" id="password" name="password" placeholder="podaj hasło" required="required" path="password"/>
-
+                        <form:errors path="password"/>
                     </div>
                     <button class="btn btn-color rounded-0" type="submit">Zarejestruj</button>
                 </form:form>

@@ -37,7 +37,7 @@
 <%--                    <form action="/cart" action="@{/addToCart}" method="post">--%>
                         <h2>
 
-                            <div class="panel-heading">
+<%--                            <div class="panel-heading">--%>
                                 <p><label>Name:</label>
                                 <c:out value="${beer.name}"/></p>
 
@@ -53,8 +53,8 @@
                                     <c:out value="${beer.brewery}"/></p>
                                 <p><label>Price:</label>
                                     <c:out value="${beer.price}"/></p>
-                                <a href="/cart">Add to cart</a>
-                            </div>
+                                <a href="${pageContext.request.contextPath}/cart">Add to cart</a>
+<%--                            </div>--%>
 
                         </h2>
                      </form>
@@ -62,8 +62,8 @@
 
                 <div class="col-7 ml-4">
                     <div class="div-img">
-                        <a href="/images/4488815.jpg">
-                            <img src="/images/4488815.jpg" alt="beer1" style="width:180%">
+                        <a href="${pageContext.request.contextPath}/images/4488815.jpg">
+                            <img src="${pageContext.request.contextPath}/images/4488815.jpg" alt="beer1" style="width:180%">
                         </a>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
 <%--                }--%>
 <%--            %>--%>
                 <a class="btn btn-info rounded-0 text-light" type="submit"
-                            href="/cart">Add to cart</a>
+                            href="${pageContext.request.contextPath}/cart">Add to cart</a>
 <%--                   href="${pageContext.request.contextPath}/cart/addBeer/${beer.id}">Add</a>--%>
 <%--                <a href="/cart" name="Cart Page">Go To cart Page</a></p>--%>
         </div>

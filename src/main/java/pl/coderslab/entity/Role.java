@@ -5,6 +5,8 @@ import lombok.*;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,10 +21,7 @@ public class Role {
     private String name;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinTable(
-            name="User_role",
-            joinColumns= @JoinColumn(name="ROLE_ID"),
-            inverseJoinColumns = @JoinColumn(name="USER_ID")
-    )
+    @JoinTable(name="User_role", joinColumns= @JoinColumn(name="ROLE_ID"), inverseJoinColumns = @JoinColumn(name="USER_ID"))
     private User user;
+
 }
