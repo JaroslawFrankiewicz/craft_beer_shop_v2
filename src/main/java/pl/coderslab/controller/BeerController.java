@@ -2,24 +2,15 @@ package pl.coderslab.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.entity.Beer;
-import pl.coderslab.entity.User;
 import pl.coderslab.services.BeerService;
-import pl.coderslab.services.CurrentUser;
-import pl.coderslab.services.UserService;
-
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -81,7 +72,7 @@ public class BeerController {
 //    }
 
         beerService.add(beer);
-        return "redirect:admin/beersList";
+        return "redirect:/admin/beersList";
     }
 
     @Secured({"ROLE_ADMIN", "ROLE_USER"})

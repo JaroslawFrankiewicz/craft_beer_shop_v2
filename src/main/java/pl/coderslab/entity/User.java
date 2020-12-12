@@ -23,7 +23,6 @@ public class User {
     @NotEmpty(message = "*Please provide a login")
     private String login;
 
-    @Transient
 //    @Length(min = 6, message = "*Your password must have at least 6 characters")
     @NotEmpty(message = "*Please provide your password")
     private String password;

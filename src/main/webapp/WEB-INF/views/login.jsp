@@ -43,7 +43,7 @@
                 <form:form action="${pageContext.request.contextPath}/login" method="post">
                     <h1 class="text-color-darker">Logowanie</h1>
                     <div class="form-group">
-                        <label for="login"></label><input type="text" class="form-control" id="login" name="login" placeholder="podaj login" required="required">
+                        <label for="username"></label><input type="text" class="form-control" id="username" name="username" placeholder="podaj login" required="required">
                     </div>
                     <div class="form-group">
                         <label for="password"></label><input type="password" class="form-control" id="password" name="password" placeholder="podaj hasło" required="required">

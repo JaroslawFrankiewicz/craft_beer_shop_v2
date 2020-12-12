@@ -6,15 +6,13 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.entity.User;
 import pl.coderslab.services.CurrentUser;
 import pl.coderslab.services.UserService;
-
-import javax.security.auth.login.LoginContext;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.net.PasswordAuthentication;
 import java.security.Principal;
 
 @Slf4j
@@ -39,31 +37,31 @@ public class UserController {
         return "register";
     }
 
-    @PostMapping("/register")
-    public String registerUser(@ModelAttribute("newUser") @Valid User user,
-                               BindingResult bindingResult) {
-
-        User existing = userService.findByLogin(user.getLogin());
-        if (existing != null) {
-            bindingResult.rejectValue("login", "There is already an account registered with that login");
-        }
-
-        if (bindingResult.hasErrors()) {
-            return "register";
-        }
-        userService.addNewUser(user);
-        return "redirect:admin/index";
-    }
-
-//    @PostMapping({"/register"})
-//    public String registrationUser(@ModelAttribute("newUser") @Validated User user, BindingResult bindingResult) {
+//    @PostMapping("/register")
+//    public String registerUser(@ModelAttribute("newUser") @Valid User user,
+//                               BindingResult bindingResult) {
+//
+//        User existing = userService.findByLogin(user.getLogin());
+//        if (existing != null) {
+//            bindingResult.rejectValue("login", "There is already an account registered with that login");
+//        }
+//
 //        if (bindingResult.hasErrors()) {
 //            return "register";
 //        }
 //        userService.addNewUser(user);
-//        return "redirect:login";
-//
+//        return "redirect:/admin/index";
 //    }
+
+    @PostMapping({"/register"})
+    public String registrationUser(@ModelAttribute("newUser") @Validated User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "register";
+        }
+        userService.addNewUser(user);
+        return "redirect:/admin/index";
+
+    }
 //    @GetMapping("/login")
 //    public String showLogin(Model model) {
 //        model.addAttribute("user", new User());
@@ -76,7 +74,7 @@ public class UserController {
     public String login(Principal principal, Model model) {
         model.addAttribute("user", new User());
         if (principal != null) {
-            return "redirect:admin/index";
+            return "redirect:/admin/index";
         }
         return "login";
     }
@@ -85,7 +83,7 @@ public class UserController {
     @PostMapping("/login")
     public String postLogin(@ModelAttribute @Valid User user, BindingResult bindingResult, Model model) {
         if (session.getAttribute("user") != null) {
-            return "redirect:admin/index";
+            return "redirect:/admin/index";
         }
 //        User user = new User();
         String login = user.getLogin();
@@ -154,7 +152,7 @@ public class UserController {
     @PostMapping({"/admin/logout"})
     public String logout(@ModelAttribute User user) {
         userService.addNewUser(user);
-        return "/";
+        return "index";
     }
 
     @GetMapping("/admin")
