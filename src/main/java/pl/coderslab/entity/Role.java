@@ -20,8 +20,8 @@ public class Role {
 
     private String name;
 
-//    @ManyToOne(cascade = CascadeType.ALL)
+//    @ManyToMany(cascade = CascadeType.ALL)
 //    @JoinTable(name="User_role", joinColumns= @JoinColumn(name="ROLE_ID"), inverseJoinColumns = @JoinColumn(name="USER_ID"))
-//    private User user;
+//    private Set<User> users;
 
 }
