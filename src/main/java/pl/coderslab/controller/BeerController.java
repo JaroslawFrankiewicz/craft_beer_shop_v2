@@ -34,7 +34,7 @@ public class BeerController {
         return "beerDetails";
     }
 
-    //    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+        @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("admin/beersList")
     public String allBeersAdmin(Model model) {
         model.addAttribute("beer", beerService.getBeer());
@@ -42,34 +42,20 @@ public class BeerController {
     }
 
 
-    //    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+        @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("/admin/add")
     public String add(Model model) {
         model.addAttribute("beer", new Beer());
         return "admin/add";
     }
 
-    //    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+        @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @PostMapping("/admin/add")
     public String add(@ModelAttribute("beer") @Valid Beer beer, BindingResult bindingResult) {
-
-//        if (bindingResult.hasErrors()) {
-//            return "admin/add";
-//        }
-//        beerService.add(beer);
-//        return "redirect:admin/beersList";
-//    }
-
         if (bindingResult.hasErrors()) {
             System.out.println("There are errors" + bindingResult.getAllErrors());
             return "admin/add";
         }
-//    String[] supressedFields = bindingResult.getSuppressedFields();
-//        if (supressedFields.length > 0) {
-//        throw new RuntimeException("Trial of binding supressed fields: "
-//                + StringUtils.arrayToCommaDelimitedString(supressedFields));
-//    }
-
         beerService.add(beer);
         return "redirect:/admin/beersList";
     }

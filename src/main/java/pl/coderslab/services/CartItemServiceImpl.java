@@ -6,11 +6,6 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.entity.Cart;
 import pl.coderslab.entity.CartItem;
 import pl.coderslab.repository.CartItemRepository;
-import pl.coderslab.repository.CartRepository;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class CartItemServiceImpl implements CartItemService {

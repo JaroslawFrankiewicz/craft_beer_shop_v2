@@ -27,8 +27,6 @@
 </section>
 <section class="mr-4 ml-4">
     <table class="table" border="1">
-<%--        <caption>align="center"</caption>--%>
-                <%--@elvariable id="beer" type=""--%>
                 <form:form method="post" modelAttribute="beer" action="${pageContext.request.contextPath}/admin/add">
                 <p hidden><form:input path="id"/></p>
                 <dt><label for="name">Name:</label></dt>

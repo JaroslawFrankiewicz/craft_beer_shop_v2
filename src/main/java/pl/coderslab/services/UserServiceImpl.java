@@ -8,8 +8,6 @@ import pl.coderslab.entity.Role;
 import pl.coderslab.entity.User;
 import pl.coderslab.repository.RoleRepository;
 import pl.coderslab.repository.UserRepository;
-
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 
@@ -21,13 +19,11 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
-
     @Autowired
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
-
     }
 
     @Override
@@ -41,7 +37,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByLogin(String login) {
-        return  userRepository.findByLogin(login);
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }

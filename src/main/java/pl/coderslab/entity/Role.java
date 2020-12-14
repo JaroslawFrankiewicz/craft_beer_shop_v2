@@ -5,8 +5,6 @@ import lombok.*;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor

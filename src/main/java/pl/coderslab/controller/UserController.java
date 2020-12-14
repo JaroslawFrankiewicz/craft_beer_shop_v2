@@ -37,22 +37,6 @@ public class UserController {
         return "register";
     }
 
-//    @PostMapping("/register")
-//    public String registerUser(@ModelAttribute("newUser") @Valid User user,
-//                               BindingResult bindingResult) {
-//
-//        User existing = userService.findByLogin(user.getLogin());
-//        if (existing != null) {
-//            bindingResult.rejectValue("login", "There is already an account registered with that login");
-//        }
-//
-//        if (bindingResult.hasErrors()) {
-//            return "register";
-//        }
-//        userService.addNewUser(user);
-//        return "redirect:/admin/index";
-//    }
-
     @PostMapping({"/register"})
     public String registrationUser(@ModelAttribute("newUser") @Validated User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -62,11 +46,6 @@ public class UserController {
         return "redirect:/admin/index";
 
     }
-//    @GetMapping("/login")
-//    public String showLogin(Model model) {
-//        model.addAttribute("user", new User());
-//        return "login";
-//    }
 
     // Logowanie
 
@@ -85,11 +64,10 @@ public class UserController {
         if (session.getAttribute("user") != null) {
             return "redirect:/admin/index";
         }
-//        User user = new User();
-        String login = user.getLogin();
+        String username = user.getUsername();
         String password = user.getPassword();
 
-        if (login == null || login.isEmpty() || password == null || password.isEmpty()) {
+        if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
             model.addAttribute("emptyField", true);
             return "login";
         }
@@ -99,7 +77,7 @@ public class UserController {
             return "login";
         }
 
-        user = userService.findByLogin(login);
+        user = userService.findByUsername(username);
 
         if (user == null || !BCrypt.checkpw(password, user.getPassword())) {
             model.addAttribute("wrongData", true);
@@ -110,38 +88,6 @@ public class UserController {
         }
         return "login";
     }
-
-//    @PostMapping("/login")
-//    public String login(Model model, CurrentUser currentUser, String login) {
-//        User user = currentUser.getUser();
-//
-//        if (user.equals(userService.findByLogin(login))) {
-//            return "admin/beersList";
-//        }
-//        model.addAttribute("noUser", "User not exist.");
-//        return "login";
-//    }
-
-//    @PostMapping("/login")
-//    public String loginPost(@RequestParam(value = "error", required = false) String error,
-//                        @RequestParam(value = "logout", required = false) String logout,
-//                        Model model, String login) {
-//        User user = userService.findByLogin(login);
-//        if (error!=null) {
-//            model.addAttribute("error", "Invalid username and password!");
-//        }
-//
-//        if (logout!=null) {
-//            model.addAttribute("message", "You have been logout successfully");
-//        }
-//        return "admin/index";
-//    }
-
-//    @PostMapping("/login")
-//    public String loginPost(@ModelAttribute User user) {
-//        userService.addNewUser(user);
-//        return "admin/beersList";
-//    }
 
     @GetMapping("/admin/index")
     public String adminLogin(Model model) {
@@ -159,6 +105,6 @@ public class UserController {
     @ResponseBody
     public String admin(@AuthenticationPrincipal CurrentUser customUser) {
         User entityUser = customUser.getUser();
-        return "Hello " + entityUser.getLogin();
+        return "Hello " + entityUser.getUsername();
     }
 }

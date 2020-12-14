@@ -9,10 +9,10 @@ public class CurrentUser extends User {
 
     private final pl.coderslab.entity.User user;
 
-    public CurrentUser(String login, String password,
+    public CurrentUser(String username, String password,
                        Collection<? extends GrantedAuthority> authorities,
                        pl.coderslab.entity.User user) {
-        super(login, password, authorities);
+        super(username, password, authorities);
         this.user = user;
     }
 

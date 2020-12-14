@@ -25,8 +25,6 @@
     <div class="container pt-4 pb-4">
         <div class="border-dashed view-height">
             <div class="container w-25">
-                <!-- fix action, method -->
-                <!-- add name attribute for all inputs -->
                 <form:form modelAttribute="newUser" action="${pageContext.request.contextPath}/register" method="POST" class="padding-small text-center">
                     <h1 class="text-color-darker">Rejestracja</h1>
                     <div class="form-group">
@@ -40,9 +38,9 @@
                         <form:errors path="lastName"/>
                     </div>
                     <div class="form-group">
-                        <label for="login"></label>
-                        <form:input type="text" class="form-control" id="login" name="login" placeholder="podaj login" required="required" path="login"/>
-                        <form:errors path="login"/>
+                        <label for="username"></label>
+                        <form:input type="text" class="form-control" id="username" name="username" placeholder="podaj username" required="required" path="username"/>
+                        <form:errors path="username"/>
                     </div>
                     <div class="form-group">
                         <label for="email"></label>

@@ -25,21 +25,6 @@
         <div class="border-dashed view-height">
             <div class="container w-25">
 
-<%--                <form action="login" method="post">--%>
-<%--                    <div><label> User Name : <input type="text" name="username"/> </label></div>--%>
-<%--                    --%>
-<%--                    <div><label> Password: <input type="password" name="password"/> </label></div>--%>
-<%--                    <div><input type="submit" value="Sign In"/></div>--%>
-<%--                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-<%--                </form>--%>
-
-<%--                <c:if test="${not empty message}">--%>
-<%--                    <div class="msg alert-success">${message}</div>--%>
-<%--                </c:if>--%>
-<%--                <form class="padding-small text-center" action="<c:url value="admin/index"/>" method="get">--%>
-<%--                    <c:if test="${not empty error}">--%>
-<%--                        <div class="error alert-danger">${error}</div>--%>
-<%--                    </c:if>--%>
                 <form:form action="${pageContext.request.contextPath}/login" method="post">
                     <h1 class="text-color-darker">Logowanie</h1>
                     <div class="form-group">
@@ -49,29 +34,7 @@
                         <label for="password"></label><input type="password" class="form-control" id="password" name="password" placeholder="podaj hasło" required="required">
                     </div>
                     <button class="btn btn-color rounded-0" type="submit">Zaloguj</button>
-<%--                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
                 </form:form>
-
-<%--    <form method="post" action="${pageContext.request.contextPath}/login">--%>
-<%--        <c:if test="${param.error !=null}">--%>
-<%--            <span>Incorrect Login or Password!</span>--%>
-<%--        </c:if>--%>
-<%--        <c:if test="${param.logout !=null}">--%>
-<%--            <span>You are logged out</span>--%>
-<%--        </c:if>--%>
-<%--        User Name: <label>--%>
-<%--        <input type="text" name="username" required min="3" max="20"/>--%>
-<%--    </label><br>--%>
-<%--        Password: <label>--%>
-<%--        <input type="password" name="password" required min="3" max="20"/>--%>
-<%--    </label><br>--%>
-<%--        Stay logged in? <label>--%>
-<%--        <input type="checkbox" name="remember-me"/>--%>
-<%--    </label><br>--%>
-<%--        <button type="submit">Log in</button>--%>
-<%--    </form>--%>
-
-
             </div>
         </div>
     </div>

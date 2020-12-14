@@ -1,4 +1,3 @@
-
 package pl.coderslab.config;
 
 import org.springframework.context.annotation.Bean;
@@ -9,11 +8,18 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import pl.coderslab.services.SpringDataUserDetailsService;
 
 @Configuration
 @Order(1)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    final AuthenticationSuccessHandler authenticationSuccessHandler;
+
+    public WebSecurityConfig(AuthenticationSuccessHandler authenticationSuccessHandler) {
+        this.authenticationSuccessHandler = authenticationSuccessHandler;
+    }
 
     @Bean
     public SpringDataUserDetailsService customUserDetailsService() {
@@ -47,25 +53,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/").permitAll()
                 .and().formLogin()
-                .loginPage("/login").permitAll()
+                .loginPage("/login").permitAll().successHandler(authenticationSuccessHandler)
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll()
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
         ;
     }
-
-//    @Autowired
-//    DataSource dataSource;
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.jdbcAuthentication()
-//                .dataSource(dataSource)
-//                .usersByUsernameQuery("SELECT `email`,`passwordHash`, FROM `users` WHERE `email`=?")
-//                .authoritiesByUsernameQuery("SELECT `email`,'USER' FROM `users` WHERE `email`=?")
-//                .passwordEncoder(passwordEncoder());
-//    }
-
 }
 
 // Test with OAuth2Sso

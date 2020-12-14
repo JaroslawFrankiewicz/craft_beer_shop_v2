@@ -24,46 +24,28 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-<%--                    <th>Category</th>--%>
-<%--                    <th>Genre</th>--%>
                     <th>Name</th>
                     <th>Quantity</th>
                     <th>Item Price</th>
                     <th>Total</th>
-                    <th>#</th>
+<%--                    <th>#</th>--%>
                 </tr>
                 </thead>
                 <tbody>
-
-<%--                <jsp:useBean id="cart" scope="request" type="pl.coderslab.services.CartService"/>--%>
-                <%--@elvariable id="cart" type="pl.coderslab.services.CartService"--%>
                 <c:forEach var="cartItem" items="${cart.cartItems}">
                     <tr>
-<%--                        <td>${cartItem.beer.category.name}</td>--%>
-<%--                        <td>${cartItem.beer.genre}</td>--%>
                         <td>${cartItem.beer.name}</td>
                         <td>${cartItem.quantity}</td>
                         <td>$${cartItem.beer.price}</td>
-<%--                        <td>$${cartItem.beerPrice}</td>--%>
-                        <td><a href="/cart/removeProduct/${cartItem.beer.id}">
+                        <td><a href="/cart/removeBeer/${cartItem.itemId}">
                             <span class="glyphicon glyphicon-remove"></span></a>
                         </td>
                     </tr>
                 </c:forEach>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <th><span class="pull-right">Grand Total:</span></th>
-<%--                    <th>${cartItem.quantity}</th>--%>
-                    <td></td>
-<%--                    <th>$${cart.totalPrice}</th>--%>
-                    <td></td>
-                </tr>
                 </tbody>
             </table>
         </div>
         <div>
-<%--            <a class="btn btn-default pull-left" href="<c:url value="/beersList"/>">Continue shopping..</a>--%>
             <a class="btn btn-danger pull-right" href="<c:url value="/cart/clear"/>">Clear Cart</a>
         </div>
     </div>

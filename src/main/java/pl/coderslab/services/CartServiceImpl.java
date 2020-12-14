@@ -35,22 +35,27 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void addBeerById(long id) {
-        Beer beer = beerRepository.getBeerById(id);
+    public void addBeerById(long userId, long beerId) {
+        Beer beer = beerRepository.getBeerById(beerId);
         if (beer != null) {
-            CartItem cartItem = new CartItem();
+            Cart cart = cartRepository.findByUserId(userId);
+            if (cart == null) {
+                cart = new Cart(userId);
+                cart = cartRepository.save(cart);
+            }
+            CartItem cartItem = new CartItem(1, cart, beer);
             cartItemRepository.save(cartItem);
         }
     }
 
     @Override
-    public void clearCart() {
-        cartRepository.deleteAll();
+    public void clearCart(long userId) {
+        cartItemRepository.deleteByCartId(userId);
     }
 
     @Override
-    public void removeCartItemByBeerId(long id) {
-        cartRepository.deleteById(id);
+    public void removeCartItemById(long id) {
+        cartItemRepository.deleteById(id);
     }
 
     @Override
@@ -72,6 +77,11 @@ public class CartServiceImpl implements CartService {
             subTotal += cartItem.getBeer().getPrice() * cartItem.getQuantity();
         }
         return String.format("%.2f", subTotal);
+    }
+
+    @Override
+    public Cart getById(long cartId) {
+        return cartRepository.findById(cartId).orElse(null);
     }
 
 }
