@@ -23,15 +23,4 @@ public class HomeController {
         return "contact";
     }
 
-
-//    @GetMapping("/profile")
-//    public String profile(Model model, Principal principal) {
-//
-//        User user = userService.findByUsername(principal.getName());
-//        model.addAttribute("user", user);
-//        model.addAttribute("cartList", user.getCart());
-//
-//        return "profile";
-//    }
-
 }

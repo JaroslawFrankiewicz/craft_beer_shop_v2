@@ -14,7 +14,14 @@
 </head>
 <body>
 <!-- start main-->
+<%--<%@ include file="header.jsp" %>--%>
+<% if(session.getAttribute("userid")=="Admin"){ %>
+<%@ include file="admin/adminheader.jsp" %>
+<%--<jsp:include page="admin/adminheader.jsp"></jsp:include>--%>
+<% } else { %>
 <%@ include file="header.jsp" %>
+<%--<jsp:include page="header.jsp"></jsp:include>--%>
+<% } %>
 <section class="padding-large">
     <div id="carouselExampleControls" class="carousel slide main-slider" data-ride="carousel">
         <div class="carousel-inner container">

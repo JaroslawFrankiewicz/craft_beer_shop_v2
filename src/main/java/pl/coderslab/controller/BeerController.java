@@ -34,7 +34,7 @@ public class BeerController {
         return "beerDetails";
     }
 
-        @Secured({"ROLE_ADMIN", "ROLE_USER"})
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("admin/beersList")
     public String allBeersAdmin(Model model) {
         model.addAttribute("beer", beerService.getBeer());
@@ -42,14 +42,14 @@ public class BeerController {
     }
 
 
-        @Secured({"ROLE_ADMIN", "ROLE_USER"})
+    @Secured("ROLE_ADMIN")
     @GetMapping("/admin/add")
     public String add(Model model) {
         model.addAttribute("beer", new Beer());
         return "admin/add";
     }
 
-        @Secured({"ROLE_ADMIN", "ROLE_USER"})
+    @Secured("ROLE_ADMIN")
     @PostMapping("/admin/add")
     public String add(@ModelAttribute("beer") @Valid Beer beer, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -60,14 +60,14 @@ public class BeerController {
         return "redirect:/admin/beersList";
     }
 
-    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+    @Secured("ROLE_ADMIN")
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable long id) {
         beerService.delete(id);
         return "redirect:/beersList";
     }
 
-    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+    @Secured("ROLE_ADMIN")
     @GetMapping("/admin/edit/{id}")
     public String edit(@PathVariable long id, Model model) {
         Optional<Beer> beer = beerService.findBeer(id);
@@ -75,7 +75,7 @@ public class BeerController {
         return "admin/beerDetails";
     }
 
-    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+    @Secured("ROLE_ADMIN")
     @PostMapping("/admin/edit")
     public String edit(@Valid Beer beer, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {

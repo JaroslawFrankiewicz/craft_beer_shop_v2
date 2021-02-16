@@ -27,7 +27,6 @@
 </section>
 
 <section class="mr-4 ml-4">
-<%--    <div class="container">--%>
     <div class="table-responsive">
         <table class="table">
             <thead>

@@ -62,7 +62,9 @@
         </table>
     </div>
 </section>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
 <a href="${pageContext.request.contextPath}/admin/add" class="btn btn-danger rounded-0 text-light">Add New Beer</a>
+</sec:authorize>
 <p style="padding-bottom:5px"></p>
 <div class="orange-line w-100"></div>
 

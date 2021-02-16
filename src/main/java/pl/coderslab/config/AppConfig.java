@@ -66,22 +66,4 @@ public class AppConfig implements WebMvcConfigurer {
         localeResolver.setDefaultLocale(new Locale("pl", "PL"));
         return localeResolver;
     }
-
-//    @Bean
-//    public BCryptPasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
-//    @Bean
-//    public RequestContextListener requestContextListener() {
-//        return new RequestContextListener();
-//    }
-//    @Bean
-//    public Validator validator() {
-//        return new LocalValidatorFactoryBean();
-//    }
-
-//    @Bean
-//    public TypeConverter getTypeConverter() {
-//        return new TypeConverter();
-//    }
 }

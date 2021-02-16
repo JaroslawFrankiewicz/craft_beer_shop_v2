@@ -49,6 +49,11 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    public Cart getById(long cartId) {
+        return cartRepository.findById(cartId).orElse(null);
+    }
+
+    @Override
     public void clearCart(long userId) {
         cartItemRepository.deleteByCartId(userId);
     }
@@ -78,10 +83,4 @@ public class CartServiceImpl implements CartService {
         }
         return String.format("%.2f", subTotal);
     }
-
-    @Override
-    public Cart getById(long cartId) {
-        return cartRepository.findById(cartId).orElse(null);
-    }
-
 }
